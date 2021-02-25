@@ -21,23 +21,23 @@ include src.mk
 
 OBJS = $(patsubst src/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
-all: asciiArt
+all: hash_code
 
 $(OBJS_DIR)/%.o: src/%.c Makefile
 	@$(PRECOMPILE)
 	$(CC) $(CFLAGS) -c -o $@ $<
 	@$(POSTCOMPILE)
 
-asciiArt: $(OBJS_GAME) $(OBJS)
+hash_code: $(OBJS_GAME) $(OBJS)
 
-asciiArt:
+hash_code:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -rf build
 
 fclean: clean
-	rm -rf asciiArt
+	rm -rf hash_code
 
 re:
 	$(MAKE) fclean
